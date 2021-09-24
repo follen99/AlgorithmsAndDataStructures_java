@@ -16,5 +16,10 @@ public class Tester {
         list.insert(4);
 
         list.printList();
+        
+        System.out.println("\n\n");
+        
+        list.removeHead();
+        list.printList();
     }
 }

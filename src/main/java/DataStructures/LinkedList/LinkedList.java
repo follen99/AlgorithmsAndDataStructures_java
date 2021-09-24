@@ -29,6 +29,13 @@ public class LinkedList {
         }
         current.next = newNode;
     }
+    
+    public int removeHead(){
+        int headValue = this.head.getValue();
+        this.head = head.getNext();
+        
+        return headValue;
+    }
 
     public void printList(){
         Node current = this.head;
