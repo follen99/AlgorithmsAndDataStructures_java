@@ -14,11 +14,12 @@ public class Stack {
 	}
 	
 	public int push(int value){
-		this.stack.insert(value);
+		this.stack.insertHead(value);
 		return value;
 	}
 	
-	public void pop(){
+	public int pop(){
+		return this.stack.removeHead();
 	}
 	
 }

@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
 * @author giuliano ranauro
 * Date: 25/09/2021
@@ -12,7 +14,7 @@ public class LinkedList {
 	
 	public LinkedList(){}
 	
-	public void insert(int valueToInsert){
+	public void insertEnd(int valueToInsert){
 		Node newNode = new Node(valueToInsert);
 		
 		if (this.head == null){
@@ -27,6 +29,41 @@ public class LinkedList {
 			current = current.next;
 		}
 		current.next = newNode;
+	}
+	
+	public void insertHead(int valueToInsert){
+		Node newNode = new Node(valueToInsert);
+		newNode.setNext(this.head);
+		
+		if (this.head == null){
+			this.head = newNode;
+			return;
+		}
+		
+		Node oldHead = this.head;
+		this.head = newNode;
+	}
+	
+	public int removeHead(){
+		int headValue = this.head.getValue();
+		this.head = head.getNext();
+		
+		return headValue;
+	}
+	
+	public int removeEnd() throws Exception{
+		Node current = this.head;
+		
+		while (current.next != null) {
+			if (current.getNext() == null) {
+				int removed = current.getNext().getValue();
+				current.setNext(null);
+				return removed;
+			}
+			current = current.getNext();
+		}
+		
+		throw new Exception("cannot remove last element");
 	}
 	
 	public void printList(){
