@@ -25,9 +25,9 @@ public class Queue {
     }
 
     public String dequeue(){
-        String element = this.first.getValue(); //salvo il valore del primo, che verrà eliminato.
+        String element = this.last.getValue(); //salvo il valore del primo, che verrà eliminato.
 
-        this.first = first.getNext();
+        this.last = last.getNext();
         if (this.isEmpty()) last = null;
         return element;
 
