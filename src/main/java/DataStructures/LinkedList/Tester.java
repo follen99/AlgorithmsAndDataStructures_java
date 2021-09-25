@@ -11,9 +11,9 @@ public class Tester {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 
-        list.insert(3);
-        list.insert(2);
-        list.insert(4);
+        list.insertEnd(3);
+        list.insertEnd(2);
+        list.insertEnd(4);
 
         list.printList();
         

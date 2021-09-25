@@ -8,4 +8,20 @@
 package DataStructures.Stack;
 
 public class Tester {
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+
+        System.out.println("Stack insert:");
+        for (int i = 0; i<5; i++) {
+            stack.push(i);
+            System.out.println(i);
+        }
+
+        System.out.println("popping elements:");
+
+
+        for (int i = 0; i<5; i++) {
+            System.out.println(stack.pop());
+        }
+    }
 }

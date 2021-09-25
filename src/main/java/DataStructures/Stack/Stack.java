@@ -7,5 +7,21 @@
  */
 package DataStructures.Stack;
 
+import DataStructures.LinkedList.LinkedList;
+
 public class Stack {
+    private LinkedList stack;
+
+    public Stack(){
+        this.stack = new LinkedList();
+    }
+
+    public int push(int value){
+        this.stack.insertHead(value);
+        return value;
+    }
+
+    public int pop(){
+        return this.stack.removeHead();
+    }
 }
