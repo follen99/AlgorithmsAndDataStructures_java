@@ -8,3 +8,11 @@
   - [Queue](https://github.com/follen99/AlgorithmsAndDataStructures_java/tree/main/src/main/java/DataStructures/Queue/Optimized)
     - [Lazy](https://github.com/follen99/AlgorithmsAndDataStructures_java/tree/main/src/main/java/DataStructures/Queue/Lazy)  
     - [Queue with arrays](https://github.com/follen99/AlgorithmsAndDataStructures_java/tree/main/src/main/java/DataStructures/Queue/ArrayQueue)
+
+
+---
+## Elengo lezioni - argomenti
+
+- **Lezione 1**: Introduzione e teoria ed utilizzo degli algoritmi
+- **Lezione 2**: Strutture dati base, Linked Lists, Stacks, Queues, Bags, Oggetti generalizzati
+- **Lezione 3**: 
