@@ -13,6 +13,10 @@ public class LinkedList {
 
     public LinkedList(){}
 
+    public boolean hasNext(){
+        return this.head!=null;
+    }
+
     public void insertEnd(int valueToInsert){
         Node newNode = new Node(valueToInsert);
 

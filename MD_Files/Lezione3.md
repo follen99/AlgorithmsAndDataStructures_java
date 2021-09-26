@@ -370,4 +370,42 @@ In questo caso abbiamo **due cicli for**, ed andiamo a verificare quali sono le 
 
 Il perchè della formula è molto semplice, infatti guardando il codice ci accorgiamo che sebbene il primo `for` controlli tutti gli elementi di `a`, il secondo parte sempre da `i+1`, di conseguenza controllerà solo la `diagonale superiore` della combinazione `a x a`.
 
-![Schermata 2021-09-26 alle 18.08.53](/Users/folly/Desktop/Schermata 2021-09-26 alle 18.08.53.png)
+<img src="https://raw.githubusercontent.com/follen99/AlgorithmsAndDataStructures_java/main/imgs/Schermata%202021-09-26%20alle%2018.08.53.png" width = 40% />
+
+|       operazione        |       Frequenza       |
+| :---------------------: | :-------------------: |
+| dichiarazione variabile |         N + 2         |
+|      assegnazione       |         N + 2         |
+|   comparazione minore   |    1/2 (N+1)(N+2)     |
+|   comparazione uguale   |       1/2N(N-1)       |
+|   `accesso all'array`   |        N(N-1)         |
+|       incremento        | da 1/2N(N-1) a N(N-1) |
+
+
+
+### Semplificare i calcoli
+
+**Ovviamente**, sarebbe tedioso andare a fare un conteggio di tipo **esaustivo**, contando ogni singola operazione dell'algoritmo, ogni volta che si vuole stimare il tempo di esecuzione di un algoritmo.
+
+Quello che andiamo a fare, quindi, è una semplificazione dei conteggi, andando a specificare solo **l'elemento di ordine maggiore**.
+
+Infatti, al **tendere di N all'infinito**, i termini di ordine minore **possono essere trascurati** perchè saranno molto piccoli rispetto ai termini di ordine  maggiore.
+
+Nel caso della [2-Sum]() diciamo che il nostro modello di costo è dato dagli accessi all'array, essendo l'operazione più frequente e costosa.
+
+#### Stimare il running time
+
+Andiamo quindi a stimare il running time come una funzione dell'**input size** e vado ad ignorare i termini che sono di **ordine minore**.
+
+
+
+## Tilde Notation
+
+- Stimare il tempo di esecuzione come una funzione della grandezza dell'input N.
+- Ignorare i termini di **ordine minore**
+  - Quando N è grande, i termini sono trascurabili
+  - Quando N è piccolo, non ci interessa il comportamento dell'algoritmo.
+
+`Esempio`: 1/6 N<sup>6</sup> + 20N + 16 = 1/6 N<sup>6</sup>
+
+Infatti in questo caso, N<sup>6</sup> ha una crescita molto grande rispetto, ad esempio, a 20N.

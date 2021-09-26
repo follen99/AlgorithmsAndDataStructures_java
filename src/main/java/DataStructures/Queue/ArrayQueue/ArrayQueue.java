@@ -48,7 +48,6 @@ public class ArrayQueue {
         String delete = this.array[first];
         first++;
 
-
         return delete;
     }
 
