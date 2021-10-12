@@ -1,4 +1,4 @@
-package Challanges.FindDuplicate;
+package Challanges.Other.FindDuplicate;
 
 /**
  * Trovare l'elemento duplicato senza usare spazio extra */

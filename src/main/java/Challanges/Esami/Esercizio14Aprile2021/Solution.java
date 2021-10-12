@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package Challanges.Esercizio14Aprile2021;
+package Challanges.Esami.Esercizio14Aprile2021;
 
 import java.util.PriorityQueue;
 

@@ -1,4 +1,4 @@
-package Challanges.ScrapExcercises.BST;
+package Challanges.Other.ScrapExcercises.BST;
 
 public class Tester {
     public static void main(String[] args) {
