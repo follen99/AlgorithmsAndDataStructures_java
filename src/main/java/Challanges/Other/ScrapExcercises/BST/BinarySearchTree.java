@@ -1,6 +1,4 @@
-package Challanges.ScrapExcercises.BST;
-
-import DataStructures.Trees.BinaryTree.BinaryTree;
+package Challanges.Other.ScrapExcercises.BST;
 
 public class BinarySearchTree {
     public class Node{

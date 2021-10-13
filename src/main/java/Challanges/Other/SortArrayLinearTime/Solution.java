@@ -1,8 +1,6 @@
-package Challanges.SortArrayLinearTime;
+package Challanges.Other.SortArrayLinearTime;
 
 import MeasuringTime.Stopwatch.Stopwatch;
-import Sorting.InsertionSort.InsertionSort;
-import Sorting.SelectionSort.SelectionSort;
 
 import java.util.Random;
 
