@@ -83,7 +83,7 @@ public class CalcImbalance {
 
         tree.printAll();
 
-        System.out.println("The imbalance of the tree is: " + tree.calcImbalance());;
+        System.out.println("The imbalance of the tree is: " + tree.calcImbalance());
 
     }
 }
