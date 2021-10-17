@@ -5,10 +5,10 @@ public class MasterTester {
 
         // ################ SELECTION SORT ####################
 
-        /*int[] arr = {7,2,1,8,6,3,5,4};
+        int[] arr = {7,2,1,8,6,3,5,4};
         SelectionSort.sort(arr);
         for (int i : arr)
-            System.out.println(i);*/
+            System.out.println(i);
         // ################ SELECTION SORT ####################
 
         // ################ BINARY SEARCH ####################
@@ -16,5 +16,22 @@ public class MasterTester {
         System.out.println("Il numero cercato è alla posizione: " + BinarySearch.find(sorted, 62));
         // ################ BINARY SEARCH ####################
 
+        // ################ BST ####################
+        BinaryTree tree = new BinaryTree();
+        tree.add(7);
+        tree.add(2);
+        tree.add(1);
+        tree.add(8);
+        tree.add(6);
+        tree.add(3);
+        tree.add(5);
+        tree.add(4);
+
+        tree.DFS();
+
+        tree.delete(3);
+        tree.DFS();
+
+        // ################ BST ####################
     }
 }
