@@ -31,7 +31,19 @@ public class MasterTester {
 
         tree.delete(3);
         tree.DFS();
-
         // ################ BST ####################
+
+
+        // ################ MinHeap ####################
+        MinHeap min = new MinHeap(10);
+        min.insert(12);
+        min.insert(7);
+        min.insert(6);
+        min.insert(10);
+        min.insert(8);
+        min.insert(20);
+
+        min.printStructure();
+
     }
 }
