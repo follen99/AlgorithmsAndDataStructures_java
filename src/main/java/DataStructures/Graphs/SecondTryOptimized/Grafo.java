@@ -8,7 +8,25 @@
 package DataStructures.Graphs.SecondTryOptimized;
 
 import java.util.*;
-
+/**
+ * Questa classe è una classe usata per modellare un grafo.
+ * Un grafo, molto semplicemente, è composto da un insieme di vertici ed un insieme di archi.
+ *
+ * In questo caso, poco ortodossalmente, il grafo è composto da un'unica struttura dati principale: una mappa che associa
+ * ad ogni chiave (il valore del nodo) il suo oggetto Node (che contiene i suoi elementi adiacenti attraverso un TreeSet)
+ *
+ * Non ho visto questa implementazione da nessuna parte per ora, infatti mi è stato insegnato che i
+ * grafi possono essere rappresentati tramite:
+ * -    matrice di adiacenza
+ * -    lista di adiacenza
+ *
+ * Non so se questo tipo di rappresentazione sia abbastanza efficiente (date le strutture dati usate credo proprio di si)
+ * ma so per certo che ha un difetto sostanziale:
+ * per via della struttura dati usata (una mappa) non possiamo inserire nodi duplicati.
+ *
+ * Sono inoltre sicuro, che potrebbe essere ulteriormente ottimizzato, nelle operazioni sui nodi adiacenti,
+ * utilizzando un'ulteriore mappa al posto di un albero per i nodi adiacenti.
+ * */
 public class Grafo {
     public class Node implements Comparator<Node>, Comparable<Node> {
         private TreeSet<Node> adj;

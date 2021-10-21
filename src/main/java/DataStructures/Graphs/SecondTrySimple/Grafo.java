@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Graphs.SecondTry;
+package DataStructures.Graphs.SecondTrySimple;
 
 import java.util.ArrayList;
 import java.util.HashSet;

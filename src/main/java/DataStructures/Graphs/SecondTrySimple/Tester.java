@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Graphs.SecondTry;
+package DataStructures.Graphs.SecondTrySimple;
 
 public class Tester {
     public static void main(String[] args) {
