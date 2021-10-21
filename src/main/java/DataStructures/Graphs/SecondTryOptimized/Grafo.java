@@ -14,6 +14,19 @@ public class Grafo {
         private TreeSet<Node> adj;
         private int val;
 
+
+        /**
+         * il rank ci dice quanti elementi adiacenti ha il nodo
+         * in questo caso teniamo il conto in una variabile (usando spazio) per avere delle performance
+         * migliori quando verrà chiamato il rank. Possiamo anche non tenere il conto ed effettuare il count ogni volta
+         *
+         * anzi, effettivamente è meglio non tenere il conto ma calcolarci il valore ogni volta,
+         * visto che la funzione rank potrebbe non essere usata così tanto spesso.
+         *
+         * ad ogni modo dipende dal tipo di applicazione
+         * */
+        // private long rank;
+
         public Node(int value){
             this.adj = new TreeSet<>();
             this.val = value;
@@ -31,6 +44,10 @@ public class Grafo {
 
         public void removeAdj(Node adj){
             this.adj.remove(adj);
+        }
+
+        public long rank(){
+            return (long)this.adj.size();
         }
 
         @Override
@@ -130,6 +147,45 @@ public class Grafo {
         }
 
         throw   new IllegalArgumentException("There is no such element in the data structure.");
+    }
+    public Node remove(Node nodeToDelete){
+        if (this.edges.containsValue(nodeToDelete)){
+            TreeSet<Node> adjToDelete = nodeToDelete.adj;
+
+            for (Node node : adjToDelete){
+                node.removeAdj(nodeToDelete);
+            }
+
+            this.edges.remove(nodeToDelete.val);
+
+            return nodeToDelete;
+        }
+
+        throw   new IllegalArgumentException("There is no such element in the data structure.");
+    }
+
+    public boolean connectedTo(int v, int w){
+        if (this.edges.containsKey(v)){
+            if (this.edges.get(v).adj.contains(this.edges.get(w)))
+                return true;
+        }
+        return false;
+    }
+    public boolean connectedTo(Node v, Node w){
+        if (this.edges.containsValue(v)){
+            if (v.adj.contains(w))
+                return true;
+        }
+        return false;
+    }
+
+    public long rank(int edgeKey){
+        // ritorno il calcolo fatto con il metodo rank della classe nodo (che conta gli elementi nel set dei nodi adiacenti)
+        return this.edges.get(edgeKey).rank();
+    }
+
+    public long rank(Node edge){
+        return edge.rank();
     }
 
     public HashMap<Integer, Node> getEdges() {

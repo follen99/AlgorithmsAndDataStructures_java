@@ -28,5 +28,10 @@ public class Tester {
 
 
         grafo.printAll();
+
+        if (grafo.connectedTo(3,4))
+            System.out.println("i nodi " + 3 + " e " + 4 + " sono connessi.");
+        else
+            System.out.println("i nodi " + 3 + " e " + 4 + " non sono connessi.");
     }
 }
