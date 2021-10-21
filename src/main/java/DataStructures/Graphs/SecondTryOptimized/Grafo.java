@@ -202,6 +202,12 @@ public class Grafo {
         return this.edges.get(edgeKey).rank();
     }
 
+    /**@Todo*/
+    public ArrayList<Node> shortestPath(int v, int w){
+
+        return null;
+    }
+
     public long rank(Node edge){
         return edge.rank();
     }
