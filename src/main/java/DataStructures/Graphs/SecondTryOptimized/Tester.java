@@ -7,6 +7,8 @@
  */
 package DataStructures.Graphs.SecondTryOptimized;
 
+import java.util.HashMap;
+
 public class Tester {
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
@@ -17,6 +19,13 @@ public class Tester {
         grafo.add(1,5);
         grafo.add(3,4);
         grafo.add(3,5);
+
+        grafo.printAll();
+
+
+        grafo.remove(1);
+        System.out.println("\nDeleted node 1\n");
+
 
         grafo.printAll();
     }

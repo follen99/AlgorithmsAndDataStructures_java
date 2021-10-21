@@ -29,6 +29,9 @@ public class Grafo {
             this.adj.add(adj);
         }
 
+        public void removeAdj(Node adj){
+            this.adj.remove(adj);
+        }
 
         @Override
         public int compare(Node o1, Node o2) {
@@ -49,21 +52,22 @@ public class Grafo {
         }
     }
 
-    private TreeSet<Node> edges;
+    private HashMap<Integer,Node> edges;
 
     public Grafo(){
-        this.edges = new TreeSet<>();
+        this.edges = new HashMap<>();
     }
 
     public void add(int edge1, int edge2){
         Node node1 = null;
         Node node2 = null;
-        for (Node node : edges){
-            if (node.val == edge1)
-                node1 = node;
-            if (node.val == edge2)
-                node2 = node;
-        }
+
+
+        if (this.edges.containsKey(edge1))
+            node1 = this.edges.get(edge1);
+        if (this.edges.containsKey(edge2))
+            node2 = this.edges.get(edge2);
+
 
         //se il nodo 1 è presente
         if (node1 != null){
@@ -76,7 +80,7 @@ public class Grafo {
                 node2 = new Node(edge2, node1);
                 node1.addAdj(node2);
 
-                edges.add(node2);
+                edges.put(node2.val, node2);
             }
         }else {
             // se il nodo 1 non è presente
@@ -85,7 +89,7 @@ public class Grafo {
                 node1 = new Node(edge1, node2);
                 node2.addAdj(node1);
 
-                edges.add(node1);
+                edges.put(node1.val, node1);
             }else{
                 // se nemmeno il node 2 è presente
                 node1 = new Node(edge1);
@@ -94,18 +98,45 @@ public class Grafo {
                 node1.addAdj(node2);
                 node2.addAdj(node1);
 
-                edges.add(node1);
-                edges.add(node2);
+                edges.put(node1.val, node1);
+                edges.put(node2.val, node2);
             }
         }
     }
 
     public void printAll(){
-        for (Node node : edges){
-            System.out.print("Nodi adiacenti al nodo " + node.val + ": ");
-            for (Node node1 : node.adj)
+        Set<Map.Entry<Integer, Node>> nodes = this.edges.entrySet();
+
+        for (Map.Entry<Integer, Node> node : nodes){
+            System.out.print("Nodi adiacenti al nodo " + node.getValue().val + ": ");
+            for (Node node1 : node.getValue().adj)
                 System.out.print(node1.val + ", ");
             System.out.println();
         }
+    }
+
+    public Node remove(int val){
+        if (this.edges.containsKey(val)){
+            Node nodeToDelete = this.edges.get(val);
+            TreeSet<Node> adjToDelete = nodeToDelete.adj;
+
+            for (Node node : adjToDelete){
+                node.removeAdj(nodeToDelete);
+            }
+
+            this.edges.remove(val);
+
+            return nodeToDelete;
+        }
+
+        throw   new IllegalArgumentException("There is no such element in the data structure.");
+    }
+
+    public HashMap<Integer, Node> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(HashMap<Integer, Node> edges) {
+        this.edges = edges;
     }
 }
