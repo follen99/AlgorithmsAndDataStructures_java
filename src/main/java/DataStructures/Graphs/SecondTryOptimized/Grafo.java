@@ -182,14 +182,14 @@ public class Grafo {
         throw   new IllegalArgumentException("There is no such element in the data structure.");
     }
 
-    public boolean connectedTo(int v, int w){
+    public boolean adjTo(int v, int w){
         if (this.edges.containsKey(v)){
             if (this.edges.get(v).adj.contains(this.edges.get(w)))
                 return true;
         }
         return false;
     }
-    public boolean connectedTo(Node v, Node w){
+    public boolean adjTo(Node v, Node w){
         if (this.edges.containsValue(v)){
             if (v.adj.contains(w))
                 return true;
