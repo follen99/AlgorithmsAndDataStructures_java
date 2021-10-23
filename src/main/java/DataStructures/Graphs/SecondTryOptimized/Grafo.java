@@ -28,6 +28,67 @@ import java.util.*;
  * utilizzando un'ulteriore mappa al posto di un albero per i nodi adiacenti.
  * */
 public class Grafo {
+    public static class DepthFirstPaths{
+        private boolean[] marked;
+        private int[] edgeTo;
+        private int s;
+
+        public DepthFirstPaths(Grafo grafo, int s){
+            marked = new boolean[grafo.size()+1];
+            edgeTo = new int[grafo.size()+1];
+            dfs(grafo,s);
+        }
+
+
+        public int[] getEdgeTo() {
+            return edgeTo;
+        }
+
+        public boolean[] getMarked() {
+            return marked;
+        }
+
+
+        private void dfs(Grafo G, int v){
+            marked[v] = true;
+            for(Node w : G.adj(v))
+                if(!marked[w.val]){		// se un vertice non è stato visitato chiama ricorisvamente se stessa su quel vertice
+                    dfs(G, w.val);
+                    edgeTo[w.val] = v;
+                }
+        }
+
+        public void printPath(){
+
+
+            for (int i = 0; i < marked.length; i++){
+                if (marked[i]){
+                    System.out.print(i + " -> ");
+                    printPath(i);
+                    System.out.println();
+                }
+            }
+        }
+
+        private void printPath(int element){
+            if (this.edgeTo[element] == 0) {
+                System.out.print(0);
+                return;
+            }
+            System.out.print(this.edgeTo[element]+" -> ");
+            printPath(this.edgeTo[element]);
+        }
+    }
+
+    /** METODI USATI PER LA DFS */
+    public TreeSet<Node> adj(int v) {
+        return this.edges.get(v).getAdj();
+    }
+    public int size(){
+        return this.edges.size();
+    }
+    /** METODI USATI PER LA DFS */
+
     public class Node implements Comparator<Node>, Comparable<Node> {
         private TreeSet<Node> adj;
         private int val;
@@ -54,6 +115,10 @@ public class Grafo {
             this.adj.add(adj);
 
             this.val = value;
+        }
+
+        public TreeSet<Node> getAdj() {
+            return adj;
         }
 
         public void addAdj(Node adj){

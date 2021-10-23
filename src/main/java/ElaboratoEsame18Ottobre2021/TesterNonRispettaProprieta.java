@@ -34,8 +34,8 @@ public class TesterNonRispettaProprieta {
 
         VerificaAlbero.Node x = tree.root.right;
 
-        ArrayList<Integer> shortestPath = tree.shortestPath(tree.getRoot());
-        ArrayList<Integer> longestPath = tree.longestPath(tree.getRoot());
+        ArrayList<Integer> shortestPath = tree.shortestPath();
+        ArrayList<Integer> longestPath = tree.longestPath();
 
         System.out.print("Cammino verso la foglia più vicina partendo dalla root: ");
         for (int i = shortestPath.size()-1; i >= 0; i--){

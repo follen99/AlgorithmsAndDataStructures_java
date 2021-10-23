@@ -36,18 +36,76 @@ public class VerificaAlbero {
 
     static class BinaryTree
     {
-        Node root;
+        static Node root;
 
         public Node getRoot(){
             return this.root;
         }
 
+        public static ArrayList<Integer> shortestPath(){
+            return calcPath(root, false);
+        }
+        public static ArrayList<Integer> longestPath(){
+            return calcPath(root, true);
+        }
+
+
+        private static ArrayList<Integer> calcPath(Node root, boolean shortestLongest)
+        {
+
+
+            //se la root è nulla vuol dire che non c'è un albero
+            if(root == null)
+            {
+                ArrayList<Integer> output = new ArrayList<>();
+                return output;
+            }
+
+            // chiamata ricorsiva sull'albero destro
+            ArrayList<Integer> right = calcPath(root.right, shortestLongest);
+
+            // chiamata ricorsiva sull'albero sinistro
+            ArrayList<Integer> left = calcPath(root.left, shortestLongest);
+
+
+            // confronto la grandezza dei due arraylist
+            // inserisco il nodo corrente
+            if (shortestLongest){
+                if(right.size() < left.size())
+                {
+                    left.add(root.key);
+                }
+                else
+                {
+                    right.add(root.key);
+                }
+            }else {
+                if(right.size() > left.size())
+                {
+                    left.add(root.key);
+                }
+                else
+                {
+                    right.add(root.key);
+                }
+            }
+
+            // ritorno l'arraylist appropriato
+            if (shortestLongest)
+                return (left.size() >
+                        right.size() ? left :right);
+            else return (left.size() >
+                    right.size() ? left :right);
+        }
+
+
+
+        /*
         public static ArrayList<Integer> longestPath(Node root)
         {
 
 
-            /**
-             * se la root è nulla vuol dire che non c'è un albero*/
+             //se la root è nulla vuol dire che non c'è un albero
             if(root == null)
             {
                 ArrayList<Integer> output = new ArrayList<>();
@@ -61,9 +119,8 @@ public class VerificaAlbero {
             ArrayList<Integer> left = longestPath(root.left);
 
 
-            /**
-             * confronto la grandezza dei due arraylist
-             * inserisco il nodo corrente*/
+             // confronto la grandezza dei due arraylist
+             // inserisco il nodo corrente
             if(right.size() < left.size())
             {
                 left.add(root.key);
@@ -77,13 +134,13 @@ public class VerificaAlbero {
             return (left.size() >
                     right.size() ? left :right);
         }
-
+        */
+        /*
         public static ArrayList<Integer> shortestPath(Node root)
         {
 
 
-            /**
-             * se la root è nulla vuol dire che non c'è un albero*/
+             //se la root è nulla vuol dire che non c'è un albero
             if(root == null)
             {
                 ArrayList<Integer> output = new ArrayList<>();
@@ -97,9 +154,8 @@ public class VerificaAlbero {
             ArrayList<Integer> left = longestPath(root.left);
 
 
-            /**
-             * confronto la grandezza dei due arraylist
-             * inserisco il nodo corrente*/
+             // confronto la grandezza dei due arraylist
+             // inserisco il nodo corrente
             if(right.size() > left.size())
             {
                 left.add(root.key);
@@ -112,6 +168,6 @@ public class VerificaAlbero {
             // ritorno l'arraylist appropriato
             return (left.size() <
                     right.size() ? left :right);
-        }
+        }*/
     }
 }
