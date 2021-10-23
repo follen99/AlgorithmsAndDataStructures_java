@@ -6,8 +6,8 @@
  * @version 1.0
  */
 package DataStructures.Graphs.SecondTryOptimized;
-
-public class TesterConnectedTo {
+/*Test della DFS, ovvero connectedTo**/
+public class TestDFS {
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
 

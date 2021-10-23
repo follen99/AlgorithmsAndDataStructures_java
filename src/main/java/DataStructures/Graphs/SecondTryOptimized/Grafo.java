@@ -28,6 +28,76 @@ import java.util.*;
  * utilizzando un'ulteriore mappa al posto di un albero per i nodi adiacenti.
  * */
 public class Grafo {
+    /**
+     * C'è da dire una cosa molto importante sulla BFS !!!
+     * la BFS è solitamente usata sui grafi direzionati (ma nulla ci vieta di usarla anche su quelli non direzionati)
+     * L'idea sarebbe quella di trovare un percorso minimo per ogni nodo, il problema è che nei grafi non direzionati
+     * non facciamo differenza tra arco uscente o entrante.
+     * */
+    public static class BreadthFirstPaths{
+        private boolean[] marked;
+        private int[] edgeTo;
+        private int[] distTo;
+
+        public BreadthFirstPaths(Grafo G, int s){
+            this.marked = new boolean[G.size()];
+            this.edgeTo = new int[G.size()];
+            this.distTo = new int[G.size()];
+
+            bfs(G, s);
+        }
+
+        private void bfs(Grafo G, int s){
+            Queue<Integer> q = new ArrayDeque<>();
+            q.add(s);
+            marked[s] = true;
+            distTo[s] = 0;
+
+            while(!q.isEmpty()){
+                int v = q.remove();
+                for(Node w : G.adj(v)){
+                    if(!marked[w.val]){
+                        q.add(w.val);
+                        marked[w.val] = true;
+                        edgeTo[w.val] = v;
+                        distTo[w.val] = distTo[v] + 1;
+                    }
+                }
+            }
+        }
+
+        public void printPath(){
+            for (int i = 0; i < marked.length; i++){
+                if (marked[i]){
+                    System.out.print(i + " -> ");
+                    printPath(i);
+                    System.out.println();
+                }
+            }
+        }
+        private void printPath(int element){
+            if (this.edgeTo[element] == 0) {
+                System.out.print(0);
+                return;
+            }
+            System.out.print(this.edgeTo[element]+" -> ");
+            printPath(this.edgeTo[element]);
+        }
+
+
+        public boolean[] getMarked() {
+            return marked;
+        }
+
+        public int[] getEdgeTo() {
+            return edgeTo;
+        }
+
+        public int[] getDistTo() {
+            return distTo;
+        }
+    }
+
     public static class DepthFirstPaths{
         private boolean[] marked;
         private int[] edgeTo;
@@ -59,8 +129,6 @@ public class Grafo {
         }
 
         public void printPath(){
-
-
             for (int i = 0; i < marked.length; i++){
                 if (marked[i]){
                     System.out.print(i + " -> ");
