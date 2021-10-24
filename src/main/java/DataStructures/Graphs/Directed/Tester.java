@@ -20,5 +20,24 @@ public class Tester {
         grafo.add(5,0);
 
         grafo.printAll();
+
+        int rootNode = 0;
+
+        Grafo.BreadthFirstPaths bfs = new Grafo.BreadthFirstPaths(grafo, rootNode);
+        boolean[] marked = bfs.getMarked();
+        int[] edgeTo = bfs.getEdgeTo();
+        /*for (boolean mark : marked){
+            System.out.println(mark);
+        }*/
+
+        System.out.print("Nodi connessi al nodo " + rootNode + ":");
+        for (int i = 0; i < grafo.size(); i++){
+            if (marked[i]){
+                System.out.print(i + ", ");
+            }
+        }
+
+        System.out.println("\nShortest path da " + rootNode + ": ");
+        bfs.printPath();
     }
 }

@@ -14,6 +14,109 @@ public class Grafo {
     public Grafo(){
         this.edges = new HashMap<>();
     }
+
+    public static class BreadthFirstPaths{
+        private boolean[] marked;   // elementi visitati
+        private int[] edgeTo;       // predecessori
+        private int[] distTo;       // distanza dalla root
+
+        public BreadthFirstPaths(Grafo g, int s){
+            this.marked = new boolean[g.size()];
+            this.edgeTo = new int[g.size()];
+            this.distTo = new int[g.size()];
+
+            bfs(g, s);
+        }
+
+        private void bfs(Grafo g, int s){
+            Queue<Integer> q = new ArrayDeque<>();
+            q.add(s);
+
+            marked[s] = true;   // marco il nodo corrente come visitato
+            distTo[s] = 0;
+
+            while (!q.isEmpty()){
+                int v = q.remove();
+
+                for (Node w : g.adj(v)){
+                    if (!marked[w.val]){
+                        q.add(w.val);
+                        marked[w.val] = true;
+                        edgeTo[w.val] = v;
+                        distTo[w.val] = distTo[v] + 1;
+                    }
+                }
+            }
+        }
+
+        public void printPath(){
+            for (int i = 0; i < marked.length; i++){
+                if (marked[i]){
+                    System.out.print(i + " -> ");
+                    printPath(i);
+                    System.out.println();
+                }
+            }
+        }
+        private void printPath(int element){
+            if (this.edgeTo[element] == 0) {
+                System.out.print(0);
+                return;
+            }
+            System.out.print(this.edgeTo[element]+" -> ");
+            printPath(this.edgeTo[element]);
+        }
+
+        public boolean[] getMarked() {
+            return this.marked;
+        }
+
+        public int[] getEdgeTo() {
+            return this.edgeTo;
+        }
+    }
+
+    public static class DepthFirstPaths{
+        private boolean[] marked;       // elementi visitati
+        private int[] edgeTo;           // predecessori
+        private int s;
+
+        public DepthFirstPaths(Grafo grafo, int s){
+            marked = new boolean[grafo.size() + 1];
+            edgeTo = new int[grafo.size() + 1];
+
+            dfs(grafo, s);
+        }
+
+        private void dfs(Grafo g, int v){
+            marked[v] = true;       // l'elemento corrente viene marcato
+            for (Node w : g.adj(v))
+                if (!marked[w.val]){
+                    dfs(g, w.val);
+                    edgeTo[w.val] = v;
+                }
+        }
+
+        public void printPath(){
+            for (int i = 0; i < marked.length; i++){
+                if (marked[i]){
+                    System.out.print(i + " -> ");
+                    printPath(i);
+                    System.out.println();
+                }
+            }
+        }
+
+        private void printPath(int element){
+            if (this.edgeTo[element] == 0) {
+                System.out.print(0);
+                return;
+            }
+            System.out.print(this.edgeTo[element]+" -> ");
+            printPath(this.edgeTo[element]);
+        }
+    }
+
     private class Node implements Comparator<Node>, Comparable<Node> {
         private Set<Node> adj;
         private int val;
@@ -128,5 +231,13 @@ public class Grafo {
                 System.out.print(node1.val + ", ");
             System.out.println();
         }
+    }
+
+
+    public Set<Node> adj(int v){
+        return this.edges.get(v).getAdj();
+    }
+    public int size(){
+        return this.edges.size();
     }
 }
