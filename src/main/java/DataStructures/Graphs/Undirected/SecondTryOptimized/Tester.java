@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Graphs.SecondTryOptimized;
+package DataStructures.Graphs.Undirected.SecondTryOptimized;
 
 public class Tester {
     public static void main(String[] args) {

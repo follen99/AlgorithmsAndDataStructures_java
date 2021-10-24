@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Graphs.FirstTry;
+package DataStructures.Graphs.Undirected.FirstTry;
 
 import java.util.ArrayList;
 

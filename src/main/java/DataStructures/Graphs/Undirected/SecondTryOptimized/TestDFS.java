@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Graphs.SecondTryOptimized;
+package DataStructures.Graphs.Undirected.SecondTryOptimized;
 /*Test della DFS, ovvero connectedTo**/
 public class TestDFS {
     public static void main(String[] args) {
