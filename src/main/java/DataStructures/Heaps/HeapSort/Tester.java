@@ -5,9 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Heaps;
-
-import java.util.Random;
+package DataStructures.Heaps.HeapSort;
 
 public class Tester {
     public static void main(String[] args) {

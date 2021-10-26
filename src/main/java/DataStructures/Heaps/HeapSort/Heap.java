@@ -5,7 +5,7 @@
  * JDK: 1.8
  * @version 1.0
  */
-package DataStructures.Heaps;
+package DataStructures.Heaps.HeapSort;
 
 /**
  * Video esempio: https://www.youtube.com/watch?v=t0Cq6tVNRBA
