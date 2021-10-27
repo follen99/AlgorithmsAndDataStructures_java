@@ -10,18 +10,33 @@ package DataStructures.PriorityQueue;
 import java.util.*;
 public class PriorityQueueDemo {
     public static void main(String[] args) {
-        PriorityQueue<Integer> pq = new java.util.PriorityQueue<>();
+        PriorityQueueArray pq = new PriorityQueueArray(6);
 
-        pq.add(5);
-        pq.add(3);
-        pq.add(20);
-        pq.add(30);
-        pq.add(100);
-        pq.add(19);
+        /*pq.insert(5);
+        pq.insert(3);
+        pq.insert(20);
+        pq.insert(30);
+        pq.insert(100);
+        pq.insert(19);*/
 
-        System.out.println(pq.poll());
-        System.out.println(pq.poll());
-        System.out.println(pq.poll());
-        System.out.println(pq.poll());
+        pq.insert(100);
+        pq.insert(78);
+        pq.insert(98);
+        pq.insert(68);
+        pq.insert(58);
+        pq.insert(1);
+
+        int[] elements = pq.getElements();
+
+        for (int i : elements){
+            System.out.print(i + "\t");
+        }
+        System.out.println();
+
+
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
     }
 }
